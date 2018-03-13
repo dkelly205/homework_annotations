@@ -1,9 +1,12 @@
 package db;
 
+import models.Folder;
+import models.File;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -94,6 +97,15 @@ public class DBHelper {
         Criteria cr = session.createCriteria(classType);
         results = getList(cr);
         return results;
+    }
+
+    public static List<File> getFilesInFolder(Folder folder){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<File> files = null;
+        Criteria cr = session.createCriteria(File.class);
+        cr.add(Restrictions.eq("folder", folder));
+        files = getList(cr);
+        return files;
     }
 
 
