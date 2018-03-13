@@ -13,6 +13,9 @@ public class File {
     private int size;
     private Folder folder;
 
+    public File() {
+    }
+
     public File(String name, String extension, int size, Folder folder) {
         this.name = name;
         this.extension = extension;
