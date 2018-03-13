@@ -1,7 +1,6 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -19,6 +18,9 @@ public class Folder {
         this.title = title;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -27,6 +29,7 @@ public class Folder {
         this.id = id;
     }
 
+    @Column(name="title")
     public String getTitle() {
         return title;
     }
@@ -35,6 +38,8 @@ public class Folder {
         this.title = title;
     }
 
+
+    @OneToMany(mappedBy = "folder", fetch = FetchType.EAGER, orphanRemoval = true)
     public Set<File> getFiles() {
         return files;
     }
