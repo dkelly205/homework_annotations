@@ -39,7 +39,7 @@ public class Folder {
     }
 
 
-    @OneToMany(mappedBy = "folder", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "folder", fetch = FetchType.EAGER)
     public Set<File> getFiles() {
         return files;
     }

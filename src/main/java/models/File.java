@@ -2,7 +2,6 @@ package models;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name="files")
 public class File {

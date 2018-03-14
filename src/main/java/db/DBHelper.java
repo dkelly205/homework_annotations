@@ -2,10 +2,7 @@ package db;
 
 import models.Folder;
 import models.File;
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -16,7 +13,6 @@ public class DBHelper {
     private static Session session;
 
     public static void save(Object object){
-
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
@@ -25,13 +21,12 @@ public class DBHelper {
         }catch (HibernateException e){
             transaction.rollback();
             e.printStackTrace();
-        }finally{
+        }finally {
             session.close();
         }
     }
 
     public static void update(Object object){
-
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
@@ -107,6 +102,4 @@ public class DBHelper {
         files = getList(cr);
         return files;
     }
-
-
 }
