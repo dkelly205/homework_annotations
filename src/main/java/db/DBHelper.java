@@ -55,6 +55,8 @@ public class DBHelper {
         }
     }
 
+
+
     public static <T> List<T> getList(Criteria cr) {
         List<T> results = null;
         try {
@@ -92,6 +94,15 @@ public class DBHelper {
         Criteria cr = session.createCriteria(classType);
         results = getList(cr);
         return results;
+    }
+
+    public static <T> T find(Class classType, int id) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        T result = null;
+        Criteria cr = session.createCriteria(classType);
+        cr.add(Restrictions.eq("id", id));
+        result = getUniqueResult(cr);
+        return result;
     }
 
     public static List<File> getFilesInFolder(Folder folder){

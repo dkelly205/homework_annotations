@@ -49,7 +49,7 @@ public class Owner {
         this.username = username;
     }
 
-    @OneToMany(mappedBy = "folder", fetch = FetchType.EAGER )
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER )
     public Set<Folder> getFolders() {
         return folders;
     }

@@ -1,6 +1,7 @@
 import db.DBHelper;
 import models.Folder;
 import models.File;
+import models.Owner;
 
 import java.util.List;
 
@@ -8,10 +9,13 @@ import java.util.List;
 public class Runner {
 
     public static void main(String[] args) {
-        Folder folder1 = new Folder("Day_1");
+
+        Owner owner1 = new Owner("Del", "Delboy");
+        DBHelper.save(owner1);
+        Folder folder1 = new Folder("Day_1", owner1);
         DBHelper.save(folder1);
 
-        Folder folder2 = new Folder("Day_2");
+        Folder folder2 = new Folder("Day_2", owner1);
         DBHelper.save(folder2);
 
         File file1 = new File("maven_intro", "java", 40, folder1);
@@ -24,6 +28,9 @@ public class Runner {
         DBHelper.save(file3);
 
         DBHelper.delete(file3);
+
+        Owner foundOwner = DBHelper.find(Owner.class, owner1.getId());
+
 
 
 
