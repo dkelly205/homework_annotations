@@ -31,10 +31,13 @@ public class Runner {
 
         Owner foundOwner = DBHelper.find(Owner.class, owner1.getId());
 
+        Folder foundFolder = DBHelper.find(Folder.class, folder1.getId());
 
 
 
         List<File> filesInFolder1 = DBHelper.getFilesInFolder(folder1);
         List<File> filesInFolder2 = DBHelper.getFilesInFolder(folder2);
+
+        List<Folder> allFolders = DBHelper.getAll(Folder.class);
     }
 }
