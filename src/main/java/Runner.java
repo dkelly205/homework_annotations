@@ -20,6 +20,14 @@ public class Runner {
         File file2 = new File("annotations_intro", "java", 35, folder2);
         DBHelper.save(file2);
 
-        List<File> results =DBHelper.getFilesInFolder(folder1);
+        File file3 = new File("hibernate_intro", "java", 35, folder2);
+        DBHelper.save(file3);
+
+        DBHelper.delete(file3);
+
+
+
+        List<File> filesInFolder1 = DBHelper.getFilesInFolder(folder1);
+        List<File> filesInFolder2 = DBHelper.getFilesInFolder(folder2);
     }
 }
